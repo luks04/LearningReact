@@ -23,8 +23,8 @@ import Lists, { ListsMap, ListsMapKeys, ListsMapIndexKeys } from './components/L
 import ExtractingListItems from './components/ExtractingListItems';
 import Forms, { ControlledInputField, ControlledCheckboxes, ControlledTextArea, ControlledSelect, ControlledSelectDynamically } from './components/Forms';
 import Poster from './components/Poster';
+import RestApiConsume, {PokemonApi} from './components/RestApiConsume';
 import Hooks from './components/Hooks';
-import Blog from './components/Promise';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -130,8 +130,17 @@ ReactDOM.render(
 ReactDOM.render(
   <BrowserRouter>
     <Container>
-      <Route path='/Blog'>
-        <Blog />
+      <Route path='/RestApiConsume'>
+        <Row>
+          <Col>
+            <br></br>
+            <RestApiConsume />
+          </Col>
+          <Col>
+          <br></br>
+            <PokemonApi />
+          </Col>
+        </Row>
       </Route>
     </Container>
   </BrowserRouter>,
