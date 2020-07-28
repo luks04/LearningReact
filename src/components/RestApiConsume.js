@@ -25,13 +25,10 @@ class Blog extends Component{
     render(){
         let array = this.state.articles
         var elements = array.map( (item,index) => {
-            return <li key={index}>{item.title}</li>
+            return <Alert variant='info' key={index}>{item.title}</Alert>
         })
-
         return(
-            <Alert variant='info'>
-                {elements}
-            </Alert>
+            elements
         )
     }
 }
