@@ -23,7 +23,7 @@ import Lists, { ListsMap, ListsMapKeys, ListsMapIndexKeys } from './components/L
 import ExtractingListItems from './components/ExtractingListItems';
 import Forms, { ControlledInputField, ControlledCheckboxes, ControlledTextArea, ControlledSelect, ControlledSelectDynamically } from './components/Forms';
 import Poster from './components/Poster';
-import RestApiConsume, {PokemonApi} from './components/RestApiConsume';
+import RestApiConsume, {PokemonApiFetch, PokemonApiAxios} from './components/RestApiConsume';
 import Hooks from './components/Hooks';
 
 ReactDOM.render(
@@ -138,7 +138,8 @@ ReactDOM.render(
           </Col>
           <Col>
           <br></br>
-            <PokemonApi />
+            <PokemonApiFetch />
+            <PokemonApiAxios />
           </Col>
         </Row>
       </Route>

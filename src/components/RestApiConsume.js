@@ -3,6 +3,7 @@ import '../assets/css/App.css';
 import '../assets/css/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Alert} from 'react-bootstrap';
+import axios from 'axios';
 
 // AJAX Y COLECCIONES
 class Blog extends Component{
@@ -28,12 +29,15 @@ class Blog extends Component{
             return <Alert variant='info' key={index}>{item.title}</Alert>
         })
         return(
-            elements
+            <div>
+                <h1>Jsonplaceholder Example</h1>
+                {elements}
+            </div>
         )
     }
 }
 
-class PokemonApi extends Component{
+class PokemonApiFetch extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -41,7 +45,7 @@ class PokemonApi extends Component{
         }
     }
 
-    componentDidMount(props){
+    componentDidMount(){
         let promesa = fetch("https://pokeapi.co/api/v2/pokemon/pikachu/");
 
         promesa.then(response => {
@@ -54,11 +58,42 @@ class PokemonApi extends Component{
         })
     }
     render(){
-        let pokemonName = this.state.pokemon['name']
+        let pokemonName = String(this.state.pokemon['name']).toUpperCase()
         return(
             <div>
+                <h1>Pokemon Api Fetch</h1>
                 <Alert variant='danger'>
-                    {String(pokemonName).toUpperCase()}
+                    Pokemon name: {pokemonName}
+                </Alert>
+            </div>
+        )
+    }
+}
+
+class PokemonApiAxios extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            pokemon_id: ''
+        }
+    }
+
+    componentDidMount(){
+        axios.get("https://pokeapi.co/api/v2/pokemon/pikachu/")
+        .then(response => {
+            this.setState({
+                pokemon_id: response.data['id']
+            })
+            console.log(response.data);
+        })
+    }
+    render(){
+        let pokemonName = String(this.state.pokemon_id)
+        return(
+            <div>
+                <h1>Pokemon Api Axios</h1>
+                <Alert variant='warning'>
+                    Id: {pokemonName}
                 </Alert>
             </div>
         )
@@ -66,4 +101,4 @@ class PokemonApi extends Component{
 }
 
 export default Blog;
-export {PokemonApi};
+export {PokemonApiFetch, PokemonApiAxios};
