@@ -33,7 +33,7 @@ function NavigationMenu (){
                 </NavDropdown>
                 <Nav.Link href='/Forms'>Forms</Nav.Link>
                 <Nav.Link href='/Poster'>Poster</Nav.Link>
-                <Nav.Link href='/RestApiConsume'>Fetch</Nav.Link>
+                <Nav.Link href='/RestApiConsume'>Rest API</Nav.Link>
                 <Nav.Link href='/Hooks'>Hooks</Nav.Link>
             </Nav>
         </Navbar.Collapse>

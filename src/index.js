@@ -25,6 +25,7 @@ import Forms, { ControlledInputField, ControlledCheckboxes, ControlledTextArea, 
 import Poster from './components/Poster';
 import RestApiConsume, {PokemonApiFetch, PokemonApiAxios} from './components/RestApiConsume';
 import Hooks from './components/Hooks';
+import PostForm from './components/PostForm';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -140,6 +141,7 @@ ReactDOM.render(
           <br></br>
             <PokemonApiFetch />
             <PokemonApiAxios />
+            <PostForm />
           </Col>
         </Row>
       </Route>

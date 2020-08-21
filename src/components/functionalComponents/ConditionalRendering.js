@@ -16,7 +16,7 @@ function Feature(props){
 
 // This can also be accomplished using an inline conditional operator:
 function Feature2(props){
-    return <h1>This feature is {props.active? "active" : "not active"}</h1>
+    return <h1>This feature is {props.active ? "active" : "not active"}</h1>
 }
 
 export default Feature;

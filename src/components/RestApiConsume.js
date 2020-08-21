@@ -43,29 +43,46 @@ class PokemonApiFetch extends Component{
         this.state = {
             pokemon: ''
         }
+
+        this.changeHandler = this.changeHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
 
-    componentDidMount(){
-        let promesa = fetch("https://pokeapi.co/api/v2/pokemon/pikachu/");
+    changeHandler(event){
+        this.setState({pokemon: event.target.value})
+    }
 
+    submitHandler = event => {
+        event.preventDefault()
+        let promesa = fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.pokemon}/`);
         promesa.then(response => {
             return response.json();
         })
-        .then(name => {
+        .then(poke => {
             this.setState({
-                pokemon: name
+                pokemon: poke['name']
             })
+            alert('A pokemon was submitted: ' + this.state.pokemon);
         })
     }
+
     render(){
-        let pokemonName = String(this.state.pokemon['name']).toUpperCase()
+        let pokemonName = this.state.pokemon.toUpperCase()
+
         return(
-            <div>
+        <div>
+            <form onSubmit = {this.submitHandler}>
+                <input type="text" name="pokemon" value={this.state.pokemon} onChange={this.changeHandler} placeholder="Pokemon's id"></input>
+                <button className="btn btn-success btn-sm" type="submit">Submit</button>
+            </form>
+            {isNaN(this.state.pokemon) &&  <div>
                 <h1>Pokemon Api Fetch</h1>
                 <Alert variant='danger'>
                     Pokemon name: {pokemonName}
                 </Alert>
             </div>
+            }
+        </div>
         )
     }
 }
@@ -84,7 +101,6 @@ class PokemonApiAxios extends Component{
             this.setState({
                 pokemon_id: response.data['id']
             })
-            console.log(response.data);
         })
     }
     render(){
